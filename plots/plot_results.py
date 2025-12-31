@@ -80,24 +80,6 @@ def plot_all_results():
         plt.savefig("figures/04_gap_to_openblas.png", dpi=200, bbox_inches="tight")
         plt.close()
 
-def plot_thread_scaling():
-    path = "results/thread_scaling.csv"
-    if not os.path.exists(path):
-        return
-    df = pd.read_csv(path)
-    df = df.sort_values(["variant","threads"]).reset_index(drop=True)
-
-    plt.figure(figsize=(9,5))
-    for v in sorted(df["variant"].unique()):
-        sub = df[df["variant"]==v].sort_values("threads")
-        plt.plot(sub["threads"], sub["gflops"], marker="o", label=v)
-    plt.xlabel("Threads")
-    plt.ylabel("GFLOP/s")
-    plt.title(f"Thread scaling (N={df['N'].iloc[0]})")
-    plt.grid(True)
-    plt.legend()
-    plt.savefig("figures/05_thread_scaling.png", dpi=200, bbox_inches="tight")
-    plt.close()
 
 if __name__ == "__main__":
     plot_all_results()
