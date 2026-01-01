@@ -11,6 +11,3 @@ This repo contains a from-scratch single-precision GEMM implementation (square m
 - Cache: L2 512 KB, L3 3 MB
 - OS: Windows + WSL2 (Ubuntu)
 
-
-## License
-MIT.
